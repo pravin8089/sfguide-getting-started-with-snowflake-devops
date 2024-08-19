@@ -74,6 +74,8 @@ create or alter task email_notification
           and punctual_pct >= 50
           and avg_temperature_air_f >= 70
           -- STEP 5: INSERT CHANGES HERE
+          and korean_restaurant_cnt > 0
+          and (zoo_cnt > 0 or aquarium_cnt > 0)          
         limit 10);
 
 
