@@ -34,14 +34,15 @@ $$;
 
 list @bronze.raw
 
-/*
-To mangle the data into a more usable form, 
-we make use of views to not materialize the marketplace data 
-and avoid the corresponding storage costs. 
- */
+
+-- To mangle the data into a more usable form, 
+-- we make use of views to not materialize the marketplace data 
+-- and avoid the corresponding storage costs. 
+
 
 -- We are interested in the per seat carbon emissions. 
 -- To obtain these, we need to divide the emission data by the number of seats in the airplane.
+
 create or replace view flight_emissions as select departure_airport, arrival_airport, avg(estimated_co2_total_tonnes / seats) * 1000 as co2_emissions_kg_per_person
   from oag_flight_emissions_data_sample.public.estimated_emissions_schedules_sample
   where seats != 0 and estimated_co2_total_tonnes is not null
