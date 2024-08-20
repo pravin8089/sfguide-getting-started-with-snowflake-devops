@@ -32,8 +32,6 @@ def get_city_for_airport(df):
   return df[0].apply(lambda iata: airports.get(iata.upper()))
 $$;
 
-list @bronze.raw
-
 
 -- To mangle the data into a more usable form, 
 -- we make use of views to not materialize the marketplace data 
